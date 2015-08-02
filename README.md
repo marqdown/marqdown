@@ -3,7 +3,7 @@
 ###### a portable markdown editor with an on-the-fly preview.
 
 |Table of Contents|
-|-:|
+|--:|
 |[Features](#features)|
 |[FAQ](#faq)|
 |[Development](#development)|
