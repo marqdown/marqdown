@@ -57,7 +57,14 @@ modePaths = [
 	"bower_components/codemirror/mode/markdown/markdown.js"
 ]
 
-errorHandler = (e) -> console.log e.message
+
+errorHandler = (e) ->
+	console.log "======= ERROR DESCRIPTION ======"
+	console.log e.extract
+	console.log e.message
+	console.log "======= ERROR DESCRIPTION END ======"
+	@emit "end"
+
 
 gulp.task "scripts", ->
 	gulp.src [
@@ -69,57 +76,51 @@ gulp.task "scripts", ->
 		.pipe uglify()
 		.pipe gulp.dest "src/built_temp"
 
+
 gulp.task "coffee", ->
-	try
-		compiled = gulp.src "src/coffee/*"
-			.pipe coffee().on "error", errorHandler
+	compiled = gulp.src "src/coffee/*"
+		.pipe coffee()
+		.on "error", errorHandler
 
-		if not debug
-			compiled.pipe uglify().on "error", errorHandler
+	if not debug
+		compiled.pipe uglify()
+				.on 'error', errorHandler
 
-		compiled.pipe gulp.dest "src/built_temp/"
-	catch e
-		return
+	compiled.pipe gulp.dest "src/built_temp/"
 
 
 gulp.task "less", ->
-	try
-		if debug
-			gulp.src "src/less/marqdown.less"
-				.pipe less(ieCompat: false).on "error", errorHandler
-				.pipe gulp.dest "src/built_temp/"
+	if debug
+		gulp.src "src/less/marqdown.less"
+			.pipe less(ieCompat: false)
+			.on "error", errorHandler
+			.pipe gulp.dest "src/built_temp/"
 
-		else
-			gulp.src "src/less/marqdown.less"
-				.pipe less(compress: !debug, ieCompat: false).on "error", errorHandler
-				.pipe uncss({
-						html: ["dist/marqdown.html"]
-						ignore: [/\.CodeMirror-\w+/].concat("h1,h2,h3,h4,h5,h6".split(","))
-					}).on "error", errorHandler
-				.pipe csso().on "error", errorHandler
-				.pipe gulp.dest "src/built_temp/"
-	catch e
-		return
+	else
+		gulp.src "src/less/marqdown.less"
+			.pipe less(compress: !debug, ieCompat: false)
+			.on "error", errorHandler
+			.pipe uncss({
+					html: ["dist/marqdown.html"]
+					ignore: [/\.CodeMirror-\w+/].concat("h1,h2,h3,h4,h5,h6".split(","))
+				})
+			.on "error", errorHandler
+			.pipe csso()
+			.on "error", errorHandler
+			.pipe gulp.dest "src/built_temp/"
 
 
-template = ->
-	try
-		gulp.src "src/template/marqdown.jade"
-			.pipe jade(locals: {debug: debug}).on "error", errorHandler
-			.pipe gulp.dest "dist/"
-	catch e
-		return
+gulp.task "template", [ "coffee", "less" ], ->
+	gulp.src "src/template/marqdown.jade"
+		.pipe jade(locals: {debug: debug})
+		.on "error", errorHandler
+		.pipe gulp.dest "dist/"
 
-gulp.task "coffee-template", [ "coffee" ], ->
-	template()
-gulp.task "less-template", [ "less" ], ->
-	template()
-gulp.task "template", ->
-	template()
 
-gulp.task "default", ["scripts", "coffee", "less" ], ->
-	template()
-	gulp.watch ["src/coffee/*.*"], ["coffee-template"]
-	gulp.watch ["src/less/*.*"], ["less-template"]
-	gulp.watch ["src/template/*.*"], ["template"]
-	gulp.watch ["README.md"], ["template"]
+gulp.task "default", ["scripts", "template"], ->
+	gulp.watch [
+		"src/coffee/*.*"
+		"src/less/*.*"
+		"src/template/*.*"
+		"README.md"
+	], ["template"]
