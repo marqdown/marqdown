@@ -1,0 +1,60 @@
+div#page.col-xs-10.col-xs-offset-1
+
+	div#source-container.col-md-6.col-md-push-6()
+		textarea(
+			data-al-codemirror="marqdown.data"
+		)
+			include ../../README.md
+
+	div#preview-container.col-md-6.col-md-pull-6(
+		data-al-syncscroll="marqdown.data.scrollOffset"
+		data-al-mouseup="marqdown.onDownloadPortable($event)"
+	)
+		div#preview.cm-s-marqdown(
+			data-al-markdown="marqdown.data.source"
+		)
+
+	footer
+		a#download-markdown.btn.btn-success.pull-right(
+			data-al-focus="marqdown.onDownloadMarkdown($event)"
+			download="markdown.md"
+			href="#"
+		)
+			span.hidden-xs.hidden-sm Download Markdown
+			span.hidden-md.hidden-lg &#x21CA;
+		span#upload-markdown.btn.btn-success.pull-right()
+			span.hidden-xs.hidden-sm Open File
+			span.hidden-md.hidden-lg &#x21EB;
+			input(type="file" data-al-change="marqdown.onUploadMarkdown($event)")
+		a#download-html.btn.btn-success.pull-left(
+			data-al-focus="marqdown.onDownloadHTML($event)"
+			download="markdown.html"
+			href=""
+		)
+			span.hidden-xs.hidden-sm Download HTML
+			span.hidden-md.hidden-lg &lt;/&gt;
+		p.text-center
+			| &copy 2015 Reiner Kempkes
+			br
+			a#download-portable(
+				data-al-focus="marqdown.onDownloadPortable($event)"
+				download="marqdown.html"
+				href="#download-portable"
+			)
+				| Portable
+				span.hidden-xs.hidden-sm &nbsp;Edition
+			a(href="https://github.com/marqdown/marqdown") GitHub
+
+
+style(type="text/css")
+	include ../built_temp/marqdown.css
+
+
+if debug
+	script(type="text/javascript" src="../src/built_temp/script.js")
+	script(type="text/javascript" src="../src/built_temp/marqdown.js")
+else
+	script(type="text/javascript")
+		include ../built_temp/script.js
+		include ../built_temp/directives.js
+		include ../built_temp/marqdown.js

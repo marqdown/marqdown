@@ -110,7 +110,14 @@ gulp.task "less", ->
 			.pipe gulp.dest "src/built_temp/"
 
 
-gulp.task "template", [ "coffee", "less" ], ->
+gulp.task "template-body", [ "coffee", "less" ], ->
+	gulp.src "src/template/body.jade"
+		.pipe jade(locals: {debug: debug})
+		.on "error", errorHandler
+		.pipe gulp.dest "src/built_temp/"
+
+
+gulp.task "template", [ "template-body" ], ->
 	gulp.src "src/template/marqdown.jade"
 		.pipe jade(locals: {debug: debug})
 		.on "error", errorHandler
