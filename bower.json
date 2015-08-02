@@ -11,7 +11,7 @@
     "alight": "~0.8.34",
     "marked": "~0.3.4",
     "bootstrap": "~3.3.5",
-    "bootswatch": "~3.3.5+2",
+    "bootswatch": "~3.3.5",
     "codemirror": "~5.5.0"
   }
 }
