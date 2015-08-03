@@ -14,12 +14,12 @@
 
 - Portable Edition
 	- one single standalone html file, no further dependencies
-	- less than 300kB
 	- [download it](#download-portable) to an usb drive and run it from there
 	- No network connection required
 	- no data is stored or transferred, so your data are private
+	- less than 230kB due to hard compression
 - Importing of existing Markdown files
-- File download of Markdown and generated HTML
+- File download of Markdown and generated and prettyfied HTML
 - Synchronous Scrolling for long files
 - Partial support for mobile devices, that's the reason why the editor is above the preview
 
@@ -75,9 +75,13 @@ Thanks to the developers of the following software:
 - [LessCSS](http://lesscss.org/)
 - [UnCSS](https://github.com/giakki/uncss)
 - [gulp](http://gulpjs.com/)
+- [lz-string](https://github.com/pieroxy/lz-string)
 - [Ubuntu Font Family](https://www.google.com/fonts#UsePlace:use/Collection:Ubuntu)
 
 ## Changelog
+
+V1.1, 03. Aug 2015:
+- Implemented inline compression using [lz-string](https://github.com/pieroxy/lz-string) to compress the whole body tag down to less than 230kB!
 
 V1.0, 02. Aug 2015:
 - Initial commit

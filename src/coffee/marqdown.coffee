@@ -63,13 +63,11 @@ class marqdown
 		if event.target.hash isnt "#download-portable"
 			return
 		doc = document.cloneNode(true)
-		doc.querySelector('.CodeMirror').remove()
-		doc.body.querySelector('#preview').innerHTML = ""
-		doc.body.querySelector('#download-markdown').href = "#"
-		doc.body.querySelector('#download-html').href = "#"
-		doc.body.querySelector('#download-portable').href = "#"
-
-		html = "<!doctype html>" + doc.documentElement.outerHTML
+		doc.querySelector('head style').remove()
+		doc.querySelector('#page').remove()
+		doc.querySelector('#marqdown-styles').remove()
+		doc.querySelector('#marqdown-scripts').remove()
+		html = "<!DOCTYPE html>" + doc.documentElement.outerHTML
 		event.target.href = "data:text/html;charset=utf-8," + encodeURIComponent(html)
 		event.target.download = "marqdown.html"
 

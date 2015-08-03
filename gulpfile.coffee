@@ -6,9 +6,11 @@ uncss  = require "gulp-uncss"
 csso   = require "gulp-csso"
 concat = require "gulp-concat"
 uglify = require "gulp-uglify"
-addSrc = require "gulp-add-src"
+lzstr  = require "lz-string"
+fs     = require "fs"
 
 debug = false
+compressBody = true
 
 addons = [
 #	"comment/comment.js"
@@ -68,9 +70,9 @@ errorHandler = (e) ->
 
 gulp.task "scripts", ->
 	gulp.src [
-		"bower_components/alight/alight.js"
-		"bower_components/marked/marked.min.js"
 		"bower_components/codemirror/lib/codemirror.js"
+		"bower_components/marked/marked.min.js"
+		"bower_components/alight/alight.js"
 	].concat(addonPaths).concat(modePaths)
 		.pipe concat "script.js"
 		.pipe uglify()
@@ -110,14 +112,23 @@ gulp.task "less", ->
 			.pipe gulp.dest "src/built_temp/"
 
 
+
 gulp.task "template-body", [ "coffee", "less" ], ->
 	gulp.src "src/template/body.jade"
 		.pipe jade(locals: {debug: debug})
 		.on "error", errorHandler
 		.pipe gulp.dest "src/built_temp/"
 
+gulp.task "template-body-compress", [ "template-body" ], ->
+	if compressBody
+		data = fs.readFileSync("src/built_temp/body.html", "utf8")
+		compressed = lzstr.compressToBase64 data
+		script = """<script type="text/javascript">"""
+		script += fs.readFileSync("bower_components/lz-string/libs/lz-string.min.js", "utf8")
+		script += """;var _marqdown=LZString.decompressFromBase64(\"#{compressed}\");document.write(_marqdown);</script>"""
+		fs.writeFileSync("src/built_temp/body.html", script, "utf8")
 
-gulp.task "template", [ "template-body" ], ->
+gulp.task "template", [ "template-body-compress" ], ->
 	gulp.src "src/template/marqdown.jade"
 		.pipe jade(locals: {debug: debug})
 		.on "error", errorHandler
