@@ -104,7 +104,7 @@ gulp.task "less", ->
 			.on "error", errorHandler
 			.pipe uncss({
 					html: ["dist/marqdown.html"]
-					ignore: [/\.CodeMirror-\w+/].concat("h1,h2,h3,h4,h5,h6".split(","))
+					ignore: [/\.CodeMirror-\w+/, /\.cm-s-marqdown.*/].concat("h1,h2,h3,h4,h5,h6".split(","))
 				})
 			.on "error", errorHandler
 			.pipe csso()
