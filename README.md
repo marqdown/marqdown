@@ -80,6 +80,9 @@ Thanks to the developers of the following software:
 
 ## Changelog
 
+V1.2, 03. Aug 2015:
+- fixed lost styles on headlines due to uncss
+
 V1.1, 03. Aug 2015:
 - Implemented inline compression using [lz-string](https://github.com/pieroxy/lz-string) to compress the whole body tag down to less than 230kB!
 
