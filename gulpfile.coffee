@@ -124,7 +124,7 @@ gulp.task "template-body-compress", [ "template-body" ], ->
 		data = fs.readFileSync("src/built_temp/body.html", "utf8")
 		compressed = lzstr.compressToBase64 data
 		script = """<script type="text/javascript">"""
-		script += fs.readFileSync("bower_components/lz-string/libs/lz-string.min.js", "utf8")
+		script += (fs.readFileSync("bower_components/lz-string/libs/lz-string.min.js", "utf8")).slice(0,-1)
 		script += """;var _marqdown=LZString.decompressFromBase64(\"#{compressed}\");document.write(_marqdown);</script>"""
 		fs.writeFileSync("src/built_temp/body.html", script, "utf8")
 

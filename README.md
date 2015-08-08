@@ -17,7 +17,7 @@
 	- [download it](#download-portable) to an usb drive and run it from there
 	- No network connection required
 	- no data is stored or transferred, so your data are private
-	- less than 230kB due to hard compression
+	- small size of 231kB due to hard compression
 - Importing of existing Markdown files
 - File download of Markdown and generated and prettyfied HTML
 - Synchronous Scrolling for long files
@@ -65,20 +65,29 @@ The compiled file contains the following resources:
 - Compiled and uncss'd CSS
 - Embedded Ubuntu Font
 
-Thanks to the developers of the following software:
-- [Bootstrap](http://getbootstrap.com/)
-- [Bootswatch](http://bootswatch.com/)
-- [Angular Light](http://angularlight.org/)
-- [CodeMirror](http://codemirror.net/)
-- [marked](https://github.com/chjj/marked)
+Embedded into the application are sources from the following software:
+- [Bootstrap](http://getbootstrap.com/) [(MIT-License)](https://github.com/twbs/bootstrap/blob/master/LICENSE)
+- [Bootswatch](http://bootswatch.com/) [(MIT-License)](https://github.com/thomaspark/bootswatch/blob/gh-pages/LICENSE)
+- [Angular Light](http://angularlight.org/) [(MIT-License)](https://github.com/lega911/angular-light/blob/master/LICENSE)
+- [CodeMirror](http://codemirror.net/) [(MIT-License)](https://github.com/codemirror/CodeMirror/blob/master/LICENSE)
+- [marked](https://github.com/chjj/marked) [(MIT-License)](https://github.com/chjj/marked/blob/master/LICENSE)
+- [lz-string](https://github.com/pieroxy/lz-string) [(WTFPL)](https://github.com/pieroxy/lz-string/blob/master/LICENSE.txt) 
+- [Ubuntu Font Family](https://www.google.com/fonts#UsePlace:use/Collection:Ubuntu) [(Ubuntu Font License)](http://font.ubuntu.com/licence/)
+
+Also thanks to the developers of the following software:
 - [Coffee-Script](http://coffeescript.org/)
 - [LessCSS](http://lesscss.org/)
 - [UnCSS](https://github.com/giakki/uncss)
 - [gulp](http://gulpjs.com/)
-- [lz-string](https://github.com/pieroxy/lz-string)
-- [Ubuntu Font Family](https://www.google.com/fonts#UsePlace:use/Collection:Ubuntu)
 
 ## Changelog
+
+V1.3, 09. Aug 2015:
+- fixed scrolling bug in webkit
+- fixed placeholder
+- added prefixes for animation keyframes for older browsers (especially webkit)
+- improved font sizes and font weight of headlines
+- added license information for embedded sources
 
 V1.2, 03. Aug 2015:
 - fixed lost styles on headlines due to uncss

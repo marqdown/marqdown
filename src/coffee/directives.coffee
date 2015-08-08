@@ -9,7 +9,7 @@ alight.directives.al.codemirror = (element, exp, scope) ->
 	options = scope.$getValue exp || {}
 	initValue = element.innerHTML
 	if initValue
-		options.placeholder = initValue
+		options.codeMirror.placeholder = initValue
 		options.codeMirror.value = initValue
 		options.source = initValue
 
@@ -49,7 +49,7 @@ alight.directives.al.codemirror = (element, exp, scope) ->
 		return if scrolling
 		scrolling = true
 		scrollOffset = cm.getScrollInfo()
-		percent = scrollOffset.top / (scrollOffset.height - scrollOffset.clientHeight + 1)
+		percent = (scrollOffset.top / (scrollOffset.height - scrollOffset.clientHeight + 1)).toFixed(3)
 		scope.$setValue exp + ".scrollOffset", percent
 		scope.$scan -> scrolling = false
 
@@ -72,7 +72,7 @@ alight.directives.al.syncscroll = (element, variable, scope) ->
 			alight.f$.off element, 'scroll', self.updateModel
 		updateModel: ->
 			self.changing = true
-			percent = element.scrollTop / (element.scrollHeight - element.clientHeight + 1)
+			percent = (element.scrollTop / (element.scrollHeight - element.clientHeight + 1)).toFixed(3)
 			scope.$setValue variable, percent
 			scope.$scan ->
 				self.changing = false
