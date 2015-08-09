@@ -13,11 +13,12 @@
 ## Features
 
 - Portable Edition
-	- one single standalone html file, no further dependencies
-	- [download it](#download-portable) to an usb drive and run it from there
+	- One single standalone html file, no further dependencies
+	- [Download it](#download-portable) to an usb drive and run it from there
 	- No network connection required
-	- no data is stored or transferred, so your data are private
-	- small size of 231kB due to hard compression
+	- No data is stored or transferred, so your data are private
+	- only ~300kB due to hard compression
+	- Syntax highlighting for code blocks
 - Importing of existing Markdown files
 - File download of Markdown and generated and prettyfied HTML
 - Synchronous Scrolling for long files
@@ -25,22 +26,21 @@
 
 ## FAQ
 
-###### How to do the right markup for ....?
+#### How to do the right markup for ....?
 This application uses the [marked](https://github.com/chjj/marked) library to convert markdown to html.
 It utilises the markup syntax from [github flavored markdown](https://help.github.com/articles/github-flavored-markdown/) where you also will find some [basic examples](https://help.github.com/articles/markdown-basics/).
 If you need the full reference, visit [John Gruber's site](https://daringfireball.net/projects/markdown/).
-Syntax highlighting for code blocks is not implemented.
 
-###### Why is the input editor on the right side?
+#### Why is the input editor on the right side?
 Typically people who read from left to right look to the left side first.
 So it lets you focus on the result, not on your code.
 
-###### Why is browser XY not supported?
+#### Why is browser XY not supported?
 This application implements modern web technologies.
 Older browsers which cannot run this app are loosers.
 Recommendation: use a newer browser.
 
-###### Can you please implement feature XY?
+#### Can you please implement feature XY?
 ~~No!~~ 
 Please implement it yourself and send me a pull request.
 Pull Requests will only accepted if they adapt current source structure and code style.
@@ -81,6 +81,11 @@ Also thanks to the developers of the following software:
 - [gulp](http://gulpjs.com/)
 
 ## Changelog
+
+V1.4, 09. Aug 2015:
+- fixed animation to be activated only on h1 element
+- fixed lost table styles
+- added syntax highlighting for several popular languages
 
 V1.3, 09. Aug 2015:
 - fixed scrolling bug in webkit

@@ -42,6 +42,8 @@ addons = [
 #	"hint/sql-hint.js"
 #	"hint/xml-hint.js"
 
+	"runmode/runmode.js"
+
 	"selection/active-line.js"
 	"selection/mark-selection.js"
 
@@ -55,9 +57,22 @@ addons = [
 addonPaths = for addon in addons
 	"bower_components/codemirror/addon/#{addon}"
 
-modePaths = [
-	"bower_components/codemirror/mode/markdown/markdown.js"
+modes = [
+	"markdown"
+	"clike"
+	"coffeescript"
+	"css"
+	"htmlmixed"
+	"javascript"
+	"perl"
+	"php"
+	"python"
+	"sql"
+	"xml"
 ]
+
+modePaths = for mode in modes
+	"bower_components/codemirror/mode/#{mode}/#{mode}.js"
 
 
 errorHandler = (e) ->
@@ -104,7 +119,7 @@ gulp.task "less", ->
 			.on "error", errorHandler
 			.pipe uncss({
 					html: ["dist/marqdown.html"]
-					ignore: [/\.CodeMirror-\w+/, /\.cm-s-marqdown.*/].concat("h1,h2,h3,h4,h5,h6".split(","))
+					ignore: [/\.CodeMirror-\w+/, /#page-\w+/,/\.cm-s-marqdown.*/].concat("h1,h2,h3,h4,h5,h6".split(","))
 				})
 			.on "error", errorHandler
 			.pipe csso()

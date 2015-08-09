@@ -25,6 +25,14 @@ class marqdown
 			sanitize: true
 			smartLists: true
 			smartypants: true
+			highlight: (code, lang) ->
+				if code and lang
+					mode = lang
+					mode = "clike" if lang in ["c", "c++", "objectivec", "objective-c", "c#", "csharp"]
+					targetNode = document.createElement "div"
+					CodeMirror.runMode code, mode, targetNode
+					code = targetNode.innerHTML
+				return code
 		)
 
 
