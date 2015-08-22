@@ -82,6 +82,9 @@ Also thanks to the developers of the following software:
 
 ## Changelog
 
+V1.4.1, 22. Aug 2015:
+- improved choppy animation in firefox: force to use hardware acceleration using a very small rotation around Y axis
+
 V1.4, 09. Aug 2015:
 - fixed animation to be activated only on h1 element
 - fixed lost table styles

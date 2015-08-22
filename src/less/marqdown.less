@@ -226,11 +226,11 @@ body {
 		color: @brand-primary;
 	}
 	16% {
-		.transform(rotateX(50deg) translate3d(0, 5px, 0));
+		.transform(rotateX(50deg) rotateY(0.1deg) translate3d(0, 5px, 0));
 		color: @brand-success;
 	}
 	20% {
-		.transform(translate3d(0, -8px, 0));
+		.transform(rotateY(0.1deg) translate3d(0, -8px, 0));
 		color: @brand-success;
 	}
 	40% {
@@ -238,11 +238,11 @@ body {
 		color: @brand-success;
 	}
 	60% {
-		.transform(rotateZ(180deg) rotateY(180deg) translate3d(0, -8px, 0));
+		.transform(rotate(180deg) rotateY(180deg) translate3d(0, -8px, 0));
 		color: @brand-warning;
 	}
 	80% {
-		.transform(rotateZ(0deg) rotateY(-180deg) translate3d(0, 0, 0));
+		.transform(rotate(0deg) rotateY(-180deg) translate3d(0, 0, 0));
 		color: @brand-info;
 	}
 	100% {
