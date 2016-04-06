@@ -13,7 +13,10 @@ class marqdown
 
 		source: ""
 		scrollOffset: 0
+
 	}
+
+	copyrightYear: (new Date()).getUTCFullYear()
 
 
 	constructor: () ->
