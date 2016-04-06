@@ -16,7 +16,7 @@ class marqdown
 	}
 
 
-	constructor: (@scope) ->
+	constructor: () ->
 		marked.setOptions(
 			gfm: true
 			tables: true
@@ -97,7 +97,7 @@ class marqdown
 				reader.onerror = (e) => throw "Error reading file."
 				reader.onload  = (e) =>
 					@data.source = e.target.result
-					@scope.$scan()
+					@$scan()
 		catch e
 			alert e
 
@@ -107,5 +107,5 @@ class marqdown
 
 
 
-alight.controllers["marqdown"] = marqdown
+alight.ctrl.marqdown = marqdown
 alight.bootstrap document.getElementById "app"
