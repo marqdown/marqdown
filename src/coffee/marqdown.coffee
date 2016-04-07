@@ -9,6 +9,11 @@ class marqdown
 			styleActiveLine: true
 			foldGutter: true
 			gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
+			matchBrackets: true
+			autoCloseBrackets: true
+			extraKeys: {
+				"Enter": "newlineAndIndentContinueMarkdownList"
+			}
 		}
 
 		source: ""

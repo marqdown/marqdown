@@ -20,8 +20,8 @@ addons = [
 
 	"edit/closebrackets.js"
 #	"edit/closetag.js"
-#	"edit/continuelist.js"
-#	"edit/matchbrackets.js"
+	"edit/continuelist.js"
+	"edit/matchbrackets.js"
 #	"edit/matchtags.js"
 #	"edit/trailingspace.js"
 

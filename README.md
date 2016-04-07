@@ -82,6 +82,9 @@ Also thanks to the developers of the following software:
 
 ## Changelog
 
+V1.5.0, 08. Apr 2016:
+- enabled codemirror bracket highlighting and bracket auto close plugins
+
 V1.4.3, 07. Apr 2016:
 - fixed copyright date
 
