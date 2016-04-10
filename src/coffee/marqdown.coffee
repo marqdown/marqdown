@@ -1,5 +1,13 @@
 class marqdown
 
+	# static function to change headline style with hotkeys
+	@cmHeadline: (cm, headline) ->
+		cursor = cm.getCursor("from")
+		line = cm.getLine(cursor.line)
+		startPos = {line: cursor.line, ch: 0}
+		endPos = {line: cursor.line, ch: line.match(/^\#*\s*/)[0].length}
+		cm.replaceRange(headline, startPos, endPos)
+
 	data: {
 		codeMirror: {
 			mode: "markdown"
@@ -13,6 +21,41 @@ class marqdown
 			autoCloseBrackets: true
 			extraKeys: {
 				"Enter": "newlineAndIndentContinueMarkdownList"
+				"Ctrl-1": (cm) -> marqdown.cmHeadline(cm, "# ")
+				"Ctrl-2": (cm) -> marqdown.cmHeadline(cm, "## ")
+				"Ctrl-3": (cm) -> marqdown.cmHeadline(cm, "### ")
+				"Ctrl-4": (cm) -> marqdown.cmHeadline(cm, "#### ")
+				"Ctrl-5": (cm) -> marqdown.cmHeadline(cm, "##### ")
+				"Ctrl-6": (cm) -> marqdown.cmHeadline(cm, "###### ")
+				"Ctrl-0": (cm) -> marqdown.cmHeadline(cm, "")
+				"Ctrl-Q": (cm) -> marqdown.cmHeadline(cm, "> ")
+				"Ctrl-I": (cm) ->
+					sel = cm.getSelection()
+					cm.replaceSelection "*" + sel + "*"
+				"Ctrl-B": (cm) ->
+					sel = cm.getSelection()
+					cm.replaceSelection "**" + sel + "**"
+				"Ctrl-O": (cm) ->
+					sel = cm.getSelection()
+					cm.replaceSelection "~~" + sel + "~~"
+				"Ctrl-K": (cm) ->
+					sel = cm.getSelection()
+					cm.replaceSelection "`" + sel + "`", "around"
+				"Ctrl-H": (cm) ->
+					sel = cm.getSelection()
+					cm.replaceSelection "---" + sel
+				"Ctrl-L": (cm) ->
+					cursor = cm.getCursor()
+					sel = cm.getSelection()
+					if sel.match(/^(http|\/\/|ftp|mailto)/)
+						cm.replaceSelection "[](#{sel})"
+						cm.setCursor {line: cursor.line, ch: cursor.ch + 1}
+					else if sel.length > 0
+						cm.replaceSelection "[#{sel}]()"
+						cm.execCommand "goColumnLeft"
+					else
+						cm.replaceSelection "[]()"
+						cm.setCursor {line: cursor.line, ch: cursor.ch + 1}
 			}
 		}
 
@@ -37,12 +80,12 @@ class marqdown
 				if code and lang
 					mode = lang
 					mode = "clike" if lang in ["c", "c++", "objectivec", "objective-c", "c#", "csharp"]
+					mode = "htmlmixed" if lang is "html"
 					targetNode = document.createElement "div"
 					CodeMirror.runMode code, mode, targetNode
 					code = targetNode.innerHTML
 				return code
 		)
-
 
 	prettyPrintXML: (xml) ->
 		formatted = ""
@@ -82,7 +125,7 @@ class marqdown
 		doc.querySelector('#page').remove()
 		doc.querySelector('#marqdown-styles').remove()
 		doc.querySelector('#marqdown-scripts').remove()
-		html = "<!DOCTYPE html>" + doc.documentElement.outerHTML
+		html = "<!doctype html>" + doc.documentElement.outerHTML
 		event.target.href = "data:text/html;charset=utf-8," + encodeURIComponent(html)
 		event.target.download = "marqdown.html"
 

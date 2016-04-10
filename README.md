@@ -23,6 +23,28 @@
 - File download of Markdown and generated and prettyfied HTML
 - Synchronous Scrolling for long files
 - Partial support for mobile devices, that's the reason why the editor is above the preview
+- Inline Syntax highlighting for
+	- coffeescript
+	- markdown
+	- css
+	- html
+	- javascript
+	- perl
+	- php
+	- c, c++, objectivec, objective-c, c#, csharp // also known as 'clike'
+	- python
+	- sql
+	- xml
+- Hotkeys
+	- Bold: CTRL + B
+	- Emphasis: CTRL + I
+	- Strike through: CTRL + O
+	- H1 to H6: CTRL + 1 to CTRL + 6
+	- Convert headline to paragraph: CTRL + 0
+	- Insert Link: CTRL + L
+	- Insert Code: CTRL + K
+	- Insert horizontal rule: CTRL + H
+	- Insert blockquote: CTRL + Q
 
 ## FAQ
 
@@ -81,6 +103,12 @@ Also thanks to the developers of the following software:
 - [gulp](http://gulpjs.com/)
 
 ## Changelog
+
+V1.6.0, 10. Apr 2016:
+- added viewport meta tag
+- added hotkeys
+- bugfixes
+- improved documentation
 
 V1.5.0, 08. Apr 2016:
 - enabled codemirror bracket highlighting and bracket auto close plugins
