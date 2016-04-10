@@ -104,6 +104,9 @@ Also thanks to the developers of the following software:
 
 ## Changelog
 
+V1.6.1, 10. Apr 2016:
+- bugfixes
+
 V1.6.0, 10. Apr 2016:
 - added viewport meta tag
 - added hotkeys

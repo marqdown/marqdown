@@ -2,10 +2,12 @@ class marqdown
 
 	# static function to change headline style with hotkeys
 	@cmHeadline: (cm, headline) ->
+		window.cm = cm
 		cursor = cm.getCursor("from")
 		line = cm.getLine(cursor.line)
+		window.line = line
 		startPos = {line: cursor.line, ch: 0}
-		endPos = {line: cursor.line, ch: line.match(/^\#*\s*/)[0].length}
+		endPos = {line: cursor.line, ch: line.match(/^(?:#|>)*\s*/)[0].length}
 		cm.replaceRange(headline, startPos, endPos)
 
 	data: {
