@@ -16,12 +16,13 @@
 	- One single standalone html file, no further dependencies
 	- [Download it](#download-portable) to an usb drive and run it from there
 	- No network connection required
-	- No data is stored or transferred, so your data are private
+	- No data is transferred, so your data are private
 	- only ~300kB due to hard compression
 	- Syntax highlighting for code blocks
 - Importing of existing Markdown files
 - File download of Markdown and generated and prettyfied HTML
 - Synchronous Scrolling for long files
+- Using localStorage to restore last data if you lost your current browser session
 - Partial support for mobile devices, that's the reason why the editor is above the preview
 - Inline Syntax highlighting for
 	- coffeescript
@@ -103,6 +104,11 @@ Also thanks to the developers of the following software:
 - [gulp](http://gulpjs.com/)
 
 ## Changelog
+
+V1.6.2, 14. Apr 2016:
+- added localStorage persistence layer to keep data
+- improved horizontal rule hotkey
+- fixed style whitelist for uncss
 
 V1.6.1, 10. Apr 2016:
 - bugfixes

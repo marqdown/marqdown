@@ -2,10 +2,8 @@ class marqdown
 
 	# static function to change headline style with hotkeys
 	@cmHeadline: (cm, headline) ->
-		window.cm = cm
 		cursor = cm.getCursor("from")
 		line = cm.getLine(cursor.line)
-		window.line = line
 		startPos = {line: cursor.line, ch: 0}
 		endPos = {line: cursor.line, ch: line.match(/^(?:#|>)*\s*/)[0].length}
 		cm.replaceRange(headline, startPos, endPos)
@@ -44,8 +42,8 @@ class marqdown
 					sel = cm.getSelection()
 					cm.replaceSelection "`" + sel + "`", "around"
 				"Ctrl-H": (cm) ->
-					sel = cm.getSelection()
-					cm.replaceSelection "---" + sel
+					cursor = cm.getCursor()
+					cm.replaceRange("\n---\n\n", {line: cursor.line, ch: 0})
 				"Ctrl-L": (cm) ->
 					cursor = cm.getCursor()
 					sel = cm.getSelection()

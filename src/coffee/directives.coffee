@@ -6,17 +6,27 @@ alight.debug.watchText = false
 
 
 alight.directives.al.codemirror = (scope, elem, exp) ->
+	ls = window.localStorage
 	options = scope.$getValue exp || {}
-	initValue = elem.innerHTML
+	initValue = ls['marqdown.lastSession'] || elem.innerHTML
 	if initValue
-		options.codeMirror.placeholder = initValue
+		options.codeMirror.placeholder = elem.innerHTML
 		options.codeMirror.value = initValue
 		options.source = initValue
+		# reset innerHTML of the element to
+		# force the editor initialization value
+		# if there was a last session
+		elem.innerHTML = initValue
 
 	if elem.tagName is "TEXTAREA"
 		cm = CodeMirror.fromTextArea elem, options.codeMirror
 	else
 		cm = CodeMirror elem, options.codeMirror
+
+	# load history if there is some history in localstorage
+	if ls['marqdown.history'] and ls['marqdown.history'] isnt ""
+		cm.clearHistory()
+		cm.setHistory(JSON.parse(ls['marqdown.history']))
 
 	scope.$scan()
 
@@ -31,7 +41,10 @@ alight.directives.al.codemirror = (scope, elem, exp) ->
 	cm.on "change", ->
 		return if updatingContent
 		updatingContent = true
-		scope.$setValue exp + ".source", cm.getValue()
+		currentValue = cm.getValue()
+		scope.$setValue exp + ".source", currentValue
+		ls['marqdown.lastSession'] = currentValue if typeof currentValue is "string"
+		ls['marqdown.history'] = JSON.stringify cm.getHistory()
 		scope.$scan -> updatingContent = false
 
 	scrolling = false

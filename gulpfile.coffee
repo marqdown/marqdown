@@ -118,8 +118,9 @@ gulp.task "less", ->
 			.pipe less(compress: !debug, ieCompat: false)
 			.on "error", errorHandler
 			.pipe uncss({
+					timeout: 1000
 					html: ["dist/marqdown.html"]
-					ignore: [/\.CodeMirror-\w+/, /#page-\w+/, /\.cm-s-marqdown.*/, /blockquote/].concat("h1,h2,h3,h4,h5,h6".split(","))
+					ignore: [/\.CodeMirror.*/, /#page-\w+/, /\.cm-s-marqdown.*/, /\.?table.*/, /@keyframe.*/, /#preview.*/].concat("h1,h2,h3,h4,h5,h6,blockquote,hr,pre".split(","))
 				})
 			.on "error", errorHandler
 			.pipe csso()
