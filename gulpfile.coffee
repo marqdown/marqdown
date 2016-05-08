@@ -2,6 +2,7 @@ gulp   = require "gulp"
 jade   = require "gulp-jade"
 coffee = require "gulp-coffee"
 less   = require "gulp-less"
+prefix = require "gulp-autoprefixer"
 uncss  = require "gulp-uncss"
 csso   = require "gulp-csso"
 concat = require "gulp-concat"
@@ -117,10 +118,11 @@ gulp.task "less", ->
 		gulp.src "src/less/marqdown.less"
 			.pipe less(compress: !debug, ieCompat: false)
 			.on "error", errorHandler
+			.pipe prefix(browsers:"> 5%")
 			.pipe uncss({
 					timeout: 1000
 					html: ["dist/marqdown.html"]
-					ignore: [/\.CodeMirror.*/, /#page-\w+/, /\.cm-s-marqdown.*/, /\.?table.*/, /@keyframe.*/, /#preview.*/].concat("h1,h2,h3,h4,h5,h6,blockquote,hr,pre".split(","))
+					ignore: [/\.CodeMirror.*/, /#page-\w+/, /\.cm-s-marqdown.*/, /\.?table.*/, /@keyframe.*/, /#preview.*/].concat("h1,h2,h3,h4,h5,h6,blockquote,hr,pre,code".split(","))
 				})
 			.on "error", errorHandler
 			.pipe csso()
@@ -153,8 +155,8 @@ gulp.task "template", [ "template-body-compress" ], ->
 
 gulp.task "default", ["scripts", "template"], ->
 	gulp.watch [
-		"src/coffee/*.*"
-		"src/less/*.*"
-		"src/template/*.*"
+		"src/coffee/*"
+		"src/less/*"
+		"src/template/*"
 		"README.md"
 	], ["template"]

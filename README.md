@@ -37,9 +37,9 @@
 	- sql
 	- xml
 - Hotkeys
-	- Bold: CTRL + B
-	- Emphasis: CTRL + I
-	- Strike through: CTRL + O
+	- **Bold**: CTRL + B
+	- *Emphasis*: CTRL + I
+	- ~~Strike through~~: CTRL + O
 	- H1 to H6: CTRL + 1 to CTRL + 6
 	- Convert headline to paragraph: CTRL + 0
 	- Insert Link: CTRL + L
@@ -100,10 +100,15 @@ Embedded into the application are sources from the following software:
 Also thanks to the developers of the following software:
 - [Coffee-Script](http://coffeescript.org/)
 - [LessCSS](http://lesscss.org/)
+- [Autoprefixer](https://github.com/postcss/autoprefixer)
 - [UnCSS](https://github.com/giakki/uncss)
 - [gulp](http://gulpjs.com/)
 
 ## Changelog
+
+V1.6.3, 08. May 2016:
+- fixed style whitelist for uncss
+- using autoprefixer
 
 V1.6.2, 14. Apr 2016:
 - added localStorage persistence layer to keep data
