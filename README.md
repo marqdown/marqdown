@@ -106,6 +106,9 @@ Also thanks to the developers of the following software:
 
 ## Changelog
 
+V1.6.5, 16. May 2016:
+- fixed headline shortcuts
+
 V1.6.4, 16. May 2016:
 - rewrote gulp build script
 

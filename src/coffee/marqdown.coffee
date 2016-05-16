@@ -21,14 +21,14 @@ class MarqDown
 			autoCloseBrackets: true
 			extraKeys: {
 				"Enter": "newlineAndIndentContinueMarkdownList"
-				"Ctrl-1": (cm) -> marqdown.cmHeadline(cm, "# ")
-				"Ctrl-2": (cm) -> marqdown.cmHeadline(cm, "## ")
-				"Ctrl-3": (cm) -> marqdown.cmHeadline(cm, "### ")
-				"Ctrl-4": (cm) -> marqdown.cmHeadline(cm, "#### ")
-				"Ctrl-5": (cm) -> marqdown.cmHeadline(cm, "##### ")
-				"Ctrl-6": (cm) -> marqdown.cmHeadline(cm, "###### ")
-				"Ctrl-0": (cm) -> marqdown.cmHeadline(cm, "")
-				"Ctrl-Q": (cm) -> marqdown.cmHeadline(cm, "> ")
+				"Ctrl-1": (cm) -> MarqDown.cmHeadline(cm, "# ")
+				"Ctrl-2": (cm) -> MarqDown.cmHeadline(cm, "## ")
+				"Ctrl-3": (cm) -> MarqDown.cmHeadline(cm, "### ")
+				"Ctrl-4": (cm) -> MarqDown.cmHeadline(cm, "#### ")
+				"Ctrl-5": (cm) -> MarqDown.cmHeadline(cm, "##### ")
+				"Ctrl-6": (cm) -> MarqDown.cmHeadline(cm, "###### ")
+				"Ctrl-0": (cm) -> MarqDown.cmHeadline(cm, "")
+				"Ctrl-Q": (cm) -> MarqDown.cmHeadline(cm, "> ")
 				"Ctrl-I": (cm) ->
 					sel = cm.getSelection()
 					cm.replaceSelection "*" + sel + "*"
