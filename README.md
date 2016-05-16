@@ -64,7 +64,7 @@ Older browsers which cannot run this app are loosers.
 Recommendation: use a newer browser.
 
 #### Can you please implement feature XY?
-~~No!~~ 
+~~No!~~
 Please implement it yourself and send me a pull request.
 Pull Requests will only accepted if they adapt current source structure and code style.
 
@@ -94,7 +94,7 @@ Embedded into the application are sources from the following software:
 - [Angular Light](http://angularlight.org/) [(MIT-License)](https://github.com/lega911/angular-light/blob/master/LICENSE)
 - [CodeMirror](http://codemirror.net/) [(MIT-License)](https://github.com/codemirror/CodeMirror/blob/master/LICENSE)
 - [marked](https://github.com/chjj/marked) [(MIT-License)](https://github.com/chjj/marked/blob/master/LICENSE)
-- [lz-string](https://github.com/pieroxy/lz-string) [(WTFPL)](https://github.com/pieroxy/lz-string/blob/master/LICENSE.txt) 
+- [lz-string](https://github.com/pieroxy/lz-string) [(WTFPL)](https://github.com/pieroxy/lz-string/blob/master/LICENSE.txt)
 - [Ubuntu Font Family](https://www.google.com/fonts#UsePlace:use/Collection:Ubuntu) [(Ubuntu Font License)](http://font.ubuntu.com/licence/)
 
 Also thanks to the developers of the following software:
@@ -105,6 +105,9 @@ Also thanks to the developers of the following software:
 - [gulp](http://gulpjs.com/)
 
 ## Changelog
+
+V1.6.4, 16. May 2016:
+- rewrote gulp build script
 
 V1.6.3, 08. May 2016:
 - fixed style whitelist for uncss

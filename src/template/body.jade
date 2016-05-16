@@ -1,6 +1,6 @@
-div#page.col-xs-10.col-xs-offset-1
+div#app.col-xs-10.col-xs-offset-1(data-al-ctrl="marqdown")
 
-	div#source-container.col-md-6.col-md-push-6()
+	div#source-container.col-md-6.col-md-push-6
 		textarea(
 			data-al-codemirror="data"
 		)
@@ -36,7 +36,7 @@ div#page.col-xs-10.col-xs-offset-1
 			span.hidden-xs.hidden-sm Download HTML
 			span.hidden-md.hidden-lg &lt;/&gt;
 		p.text-center
-			| &copy 2015&ndash;{{copyrightYear}}, Reiner Kempkes
+			| &copy; 2015&ndash;{{copyrightYear}}, Reiner Kempkes
 			br
 			a#download-portable(
 				data-al-focus="onDownloadPortable($event)"
@@ -48,16 +48,16 @@ div#page.col-xs-10.col-xs-offset-1
 			a(href="https://github.com/marqdown/marqdown") GitHub
 
 
-style(id="marqdown-styles" type="text/css")
-	include ../built_temp/marqdown.css
+	style(id="marqdown-styles" type="text/css")
+		include ../built_temp/marqdown.css
 
 
-if debug
-	script(type="text/javascript" src="../src/built_temp/script.js")
-	script(type="text/javascript" src="../src/built_temp/directives.js")
-	script(type="text/javascript" src="../src/built_temp/marqdown.js")
-else
-	script(id="marqdown-scripts" type="text/javascript")
-		include ../built_temp/script.js
-		include ../built_temp/directives.js
-		include ../built_temp/marqdown.js
+	if debug
+		script(type="text/javascript" src="../src/built_temp/script.js")
+		script(type="text/javascript" src="../src/built_temp/directives.js")
+		script(type="text/javascript" src="../src/built_temp/marqdown.js")
+	else
+		script(id="marqdown-scripts" type="text/javascript")
+			include ../built_temp/script.js
+			include ../built_temp/directives.js
+			include ../built_temp/marqdown.js

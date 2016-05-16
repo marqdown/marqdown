@@ -1,4 +1,4 @@
-class marqdown
+class MarqDown
 
 	# static function to change headline style with hotkeys
 	@cmHeadline: (cm, headline) ->
@@ -79,7 +79,14 @@ class marqdown
 			highlight: (code, lang) ->
 				if code and lang
 					mode = lang
-					mode = "clike" if lang in ["c", "c++", "objectivec", "objective-c", "c#", "csharp"]
+					mode = "clike" if lang in [
+						"c"
+						"c++"
+						"objectivec"
+						"objective-c"
+						"c#"
+						"csharp"
+					]
 					mode = "htmlmixed" if lang is "html"
 					targetNode = document.createElement "div"
 					CodeMirror.runMode code, mode, targetNode
@@ -122,9 +129,7 @@ class marqdown
 			return
 		doc = document.cloneNode(true)
 		doc.querySelector('head style').remove()
-		doc.querySelector('#page').remove()
-		doc.querySelector('#marqdown-styles').remove()
-		doc.querySelector('#marqdown-scripts').remove()
+		doc.querySelector('#app').remove()
 		html = "<!doctype html>" + doc.documentElement.outerHTML
 		event.target.href = "data:text/html;charset=utf-8," + encodeURIComponent(html)
 		event.target.download = "marqdown.html"
@@ -132,20 +137,29 @@ class marqdown
 
 	onDownloadHTML: (event) =>
 		convertedSource = marked @data.source
-		html = """<html><head><meta charset="utf-8" /></head><body>#{convertedSource}</body></html>"""
-		event.target.href = "data:text/html;charset=utf-8," + encodeURIComponent("<\!doctype html>\n" + @prettyPrintXML(html))
+		html  = """<html><head><meta charset="utf-8"/></head>"""
+		html += """<body>#{convertedSource}</body></html>"""
+		encoded = encodeURIComponent("<!doctype html>\n" + @prettyPrintXML(html))
+		event.target.href = "data:text/html;charset=utf-8," + encoded
 
 
 	onUploadMarkdown: (event) =>
 		try
 			for file in event.target.files
 				if file.size > 5 * 1024 * 1024
-					throw "Filesize greater than 5MB."
-				if file.type not in ["text/plain", "text/css", "text/html", "application/xml", "application/markdown"]
-					throw "Not supported file type"
+					throw new Error("Filesize greater than 5MB.")
+				if file.type not in [
+					"text/plain"
+					"text/css"
+					"text/html"
+					"application/xml"
+					"application/markdown"
+				]
+					throw new Error("Not supported file type")
+
 				reader = new FileReader()
 				reader.readAsText(file, "UTF-8")
-				reader.onerror = (e) => throw "Error reading file."
+				reader.onerror = (e) => throw new Error("Error reading file.")
 				reader.onload  = (e) =>
 					@data.source = e.target.result
 					@$scan()
@@ -154,9 +168,10 @@ class marqdown
 
 
 	onDownloadMarkdown: (event) =>
-		event.target.href = "data:application/markdown;charset=utf-8," + encodeURIComponent(@data.source)
+		encoded = encodeURIComponent(@data.source)
+		event.target.href = "data:application/markdown;charset=utf-8," + encoded
 
 
 
-alight.ctrl.marqdown = marqdown
+alight.ctrl.marqdown = MarqDown
 alight.bootstrap document.getElementById "app"

@@ -61,7 +61,8 @@ alight.directives.al.codemirror = (scope, elem, exp) ->
 		return if scrolling
 		scrolling = true
 		scrollOffset = cm.getScrollInfo()
-		percent = (scrollOffset.top / (scrollOffset.height - scrollOffset.clientHeight + 1)).toFixed(3)
+		relativeScrollOffset = (scrollOffset.height - scrollOffset.clientHeight + 1)
+		percent = (scrollOffset.top / relativeScrollOffset).toFixed(3)
 		scope.$setValue exp + ".scrollOffset", percent
 		scope.$scan -> scrolling = false
 
@@ -82,7 +83,8 @@ alight.directives.al.syncscroll = (scope, elem, exp) ->
 			alight.f$.off elem, 'scroll', self.updateModel
 		updateModel: ->
 			self.changing = true
-			percent = (elem.scrollTop / (elem.scrollHeight - elem.clientHeight + 1)).toFixed(3)
+			relativeScrollOffset = (elem.scrollHeight - elem.clientHeight + 1)
+			percent = (elem.scrollTop / relativeScrollOffset).toFixed(3)
 			scope.$setValue exp, percent
 			scope.$scan ->
 				self.changing = false
