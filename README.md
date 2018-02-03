@@ -75,12 +75,10 @@ Before install, make sure you have installed bower, npm and gulp globally.
 To begin with development, just type
 ```
 npm install
-bower install
-make
 ```
 in console.
 
-```make``` runs a gulp task that sets up some file watchers so you can just modify the source files
+This will also run a gulp task that sets up some file watchers so you can just modify the source files
 and everything will be compiled together automatically.
 
 The compiled file contains the following resources:
@@ -105,6 +103,11 @@ Also thanks to the developers of the following software:
 - [gulp](http://gulpjs.com/)
 
 ## Changelog
+
+V1.7.0, 03. February 2018:
+- removed bower, switched to npm
+- updated dependencies
+- fixed warnings
 
 V1.6.5, 16. May 2016:
 - fixed headline shortcuts
@@ -167,7 +170,7 @@ V1.0, 02. Aug 2015:
 
 The MIT License (MIT)
 
-Copyright (c) 2015 Reiner Kempkes
+Copyright (c) 2015-2018 Reiner Kempkes
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

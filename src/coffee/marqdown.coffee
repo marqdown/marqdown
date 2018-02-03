@@ -122,7 +122,7 @@ class MarqDown
 		formatted
 
 
-	onDownloadPortable: (event) =>
+	onDownloadPortable: (event) ->
 		if event.target.nodeName isnt "A"
 			return
 		if event.target.hash isnt "#download-portable"
@@ -159,7 +159,7 @@ class MarqDown
 
 				reader = new FileReader()
 				reader.readAsText(file, "UTF-8")
-				reader.onerror = (e) => throw new Error("Error reading file.")
+				reader.onerror = (e) -> throw new Error("Error reading file.")
 				reader.onload  = (e) =>
 					@data.source = e.target.result
 					@$scan()

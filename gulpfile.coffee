@@ -11,7 +11,7 @@ options =
 # initialize existing tasks
 tasks(gulp, options)
 
-gulp.task "pre-build", [ "bower:install", "scripts:libs" ]
+gulp.task "pre-build", [ "scripts:libs" ]
 
 # define default task
 gulp.task "default", [ "templates" ], ->

@@ -1,5 +1,5 @@
-@bower: "../../bower_components/";
-@bootstrap: "@{bower}bootstrap/less/";
+@nodeModules: "../../node_modules/";
+@bootstrap: "@{nodeModules}bootstrap/less/";
 
 @font-face {
 	font-family: 'Ubuntu';
@@ -9,7 +9,7 @@
 }
 
 @import "bootstrap";
-@import (less) "@{bower}codemirror/lib/codemirror.css";
+@import (less) "@{nodeModules}codemirror/lib/codemirror.css";
 
 html,
 body {

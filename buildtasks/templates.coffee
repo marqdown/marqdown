@@ -27,7 +27,7 @@ module.exports = (gulp, options) ->
 			data = fs.readFileSync("src/built_temp/body.html", "utf8")
 			compressed = lzstr.compressToBase64 data
 			script = """<script type="text/javascript">"""
-			script += (fs.readFileSync("bower_components/lz-string/libs/lz-string.min.js", "utf8")).slice(0,-1)
+			script += (fs.readFileSync("node_modules/lz-string/libs/lz-string.min.js", "utf8")).slice(0,-1)
 			script += """;document.write(LZString.decompressFromBase64(\"#{compressed}\"));</script>"""
 			fs.writeFileSync("src/built_temp/body.html", script, "utf8")
 

@@ -3,5 +3,6 @@
   "propertyOrdering": false,
   "stringQuotes": false,
   "qualifyingElement": false,
-  "zeroUnit": true
+  "zeroUnit": "no_unit",
+  "newlineAfterBlock": false
 }

@@ -48,7 +48,7 @@ module.exports = (gulp, options) ->
 	]
 
 	addonPaths = for addon in addons
-		"bower_components/codemirror/addon/#{addon}"
+		"node_modules/codemirror/addon/#{addon}"
 
 	modes = [
 		"markdown"
@@ -65,14 +65,14 @@ module.exports = (gulp, options) ->
 	]
 
 	modePaths = for mode in modes
-		"bower_components/codemirror/mode/#{mode}/#{mode}.js"
+		"node_modules/codemirror/mode/#{mode}/#{mode}.js"
 
 
 	gulp.task "scripts:libs", ->
 		sourceFiles = [
-			"bower_components/codemirror/lib/codemirror.js"
-			"bower_components/marked/marked.min.js"
-			"bower_components/alight/alight.js"
+			"node_modules/codemirror/lib/codemirror.js"
+			"node_modules/marked/marked.min.js"
+			"node_modules/alight/alight.js"
 		].concat(addonPaths).concat(modePaths)
 		gulp.src sourceFiles
 			.pipe concat "script.js"

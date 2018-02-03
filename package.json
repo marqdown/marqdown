@@ -1,32 +1,36 @@
 {
   "name": "marqdown",
-  "version": "1.6.4",
+  "version": "1.7.0",
   "description": "",
   "main": "dist/marqdown.html",
   "repository": "https://github.com/marqdown/marqdown",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "node_modules/gulp/bin/gulp.js --require coffee-script/register pre-build",
-    "start": "node_modules/gulp/bin/gulp.js --require coffee-script/register"
+    "install": "node_modules/gulp/bin/gulp.js --require coffeescript/register pre-build",
+    "start": "node_modules/gulp/bin/gulp.js --require coffeescript/register"
   },
   "author": "Reiner Kempkes",
   "license": "MIT",
   "dependencies": {
-    "coffee-script": "^1.10.0",
+    "alight": "^0.12.18",
+    "bootstrap": "^3.3.7",
+    "bootswatch": "^3.3.7",
+    "codemirror": "^5.34.0",
+    "coffee-script": "^1.12.7",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
-    "gulp-bower": "0.0.13",
-    "gulp-coffee": "^2.3.1",
+    "gulp-coffee": "^2.3.5",
     "gulp-coffeelint": "^0.6.0",
     "gulp-concat": "^2.6.0",
-    "gulp-csso": "^1.1.0",
+    "gulp-csso": "^3.0.1",
     "gulp-if-else": "^1.0.3",
     "gulp-jade": "^1.1.0",
-    "gulp-less": "^3.0.5",
-    "gulp-lesshint": "^1.1.0",
-    "gulp-uglify": "^1.2.0",
+    "gulp-less": "^3.4.0",
+    "gulp-lesshint": "^4.1.0",
+    "gulp-uglify": "^3.0.0",
     "gulp-uncss": "^1.0.5",
     "load-gulp-tasks": "^0.1.0",
-    "lz-string": "^1.4.4"
+    "lz-string": "^1.4.4",
+    "marked": "^0.3.12"
   }
 }
