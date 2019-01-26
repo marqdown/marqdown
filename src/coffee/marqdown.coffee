@@ -152,6 +152,7 @@ class MarqDown
 					"text/plain"
 					"text/css"
 					"text/html"
+					"text/markdown"
 					"application/xml"
 					"application/markdown"
 				]

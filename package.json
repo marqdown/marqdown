@@ -1,6 +1,6 @@
 {
   "name": "marqdown",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "description": "",
   "main": "dist/marqdown.html",
   "repository": "https://github.com/marqdown/marqdown",
@@ -33,6 +33,7 @@
     "load-gulp-tasks": "^0.1.0",
     "lz-string": "^1.4.4",
     "marked": "^0.6.0",
+    "typeface-ubuntu": "0.0.65",
     "uncss": "^0.16.2"
   }
 }

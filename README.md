@@ -92,8 +92,8 @@ Embedded into the application are sources from the following software:
 - [Angular Light](http://angularlight.org/) [(MIT-License)](https://github.com/lega911/angular-light/blob/master/LICENSE)
 - [CodeMirror](http://codemirror.net/) [(MIT-License)](https://github.com/codemirror/CodeMirror/blob/master/LICENSE)
 - [marked](https://github.com/chjj/marked) [(MIT-License)](https://github.com/chjj/marked/blob/master/LICENSE)
-- [lz-string](https://github.com/pieroxy/lz-string) [(WTFPL)](https://github.com/pieroxy/lz-string/blob/master/LICENSE.txt)
-- [Ubuntu Font Family](https://www.google.com/fonts#UsePlace:use/Collection:Ubuntu) [(Ubuntu Font License)](http://font.ubuntu.com/licence/)
+- [lz-string](https://github.com/pieroxy/lz-string) [(MIT-License)](https://github.com/pieroxy/lz-string/blob/master/LICENSE)
+- [Ubuntu Font Family Typeface](https://github.com/KyleAMathews/typefaces/tree/master/packages/ubuntu) [(Ubuntu Font License)](http://font.ubuntu.com/licence/)
 
 Also thanks to the developers of the following software:
 - [Coffee-Script](http://coffeescript.org/)
@@ -103,6 +103,12 @@ Also thanks to the developers of the following software:
 - [gulp](http://gulpjs.com/)
 
 ## Changelog
+
+V1.7.3, 26. January 2019:
+- fixed animation bug
+- fixed loading of .md files by adding mime type text/markdown
+- added description meta tag
+- using typeface-ubuntu npm package instead of own font file
 
 V1.7.2, 26. January 2019:
 - fixed bug due to pug migration in last release

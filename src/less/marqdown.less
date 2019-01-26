@@ -1,11 +1,13 @@
 @nodeModules: "../../node_modules/";
 @bootstrap: "@{nodeModules}bootstrap/less/";
+@fontFile: "../../node_modules/typeface-ubuntu/files/ubuntu-latin-400.woff2";
 
 @font-face {
 	font-family: 'Ubuntu';
 	font-style: normal;
 	font-weight: 500;
-	src: data-uri("application/x-font-woff2;base64", "../fonts/ubuntu.woff2") format('woff2');
+	src: data-uri("application/x-font-woff2;base64", @fontFile) format('woff2');
+	// src: url(data:application/x-font-woff2;base64,%EMBEDFONT%);
 }
 
 @import "bootstrap";
@@ -242,7 +244,7 @@ body {
 		color: @brand-success;
 	}
 	20% {
-		transform: rotateX(50deg) rotateY(0.1deg) translate3d(0, -8px, 0);
+		transform: rotateY(0.1deg) translate3d(0, -8px, 0);
 		color: @brand-success;
 	}
 	40% {
