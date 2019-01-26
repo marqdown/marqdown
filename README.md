@@ -104,6 +104,12 @@ Also thanks to the developers of the following software:
 
 ## Changelog
 
+V1.7.1, 26. January 2019:
+- updated dependencies
+- migrated gulp-uncss to uncss as gulp-postcss plugin
+- fixed animation bug
+- replaced jade dependency with pug
+
 V1.7.0, 03. February 2018:
 - removed bower, switched to npm
 - updated dependencies
