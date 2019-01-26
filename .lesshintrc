@@ -4,5 +4,6 @@
   "stringQuotes": false,
   "qualifyingElement": false,
   "zeroUnit": "no_unit",
-  "newlineAfterBlock": false
+  "newlineAfterBlock": false,
+  "spaceAroundComma": false
 }

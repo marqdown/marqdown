@@ -5,19 +5,19 @@ module.exports = (gulp, options) ->
 
 
 	gulp.task "templates:prebuild-body", [ "scripts:libs", "scripts", "styles" ], ->
-		gulp.src "src/template/body.jade"
+		gulp.src "src/template/body.pug"
 			.pipe pug(locals: {debug: options.debug})
 			.pipe gulp.dest "src/built_temp/"
 
 
 	gulp.task "templates:prebuild", [ "templates:prebuild-body" ], ->
-		gulp.src "src/template/marqdown.jade"
+		gulp.src "src/template/marqdown.pug"
 			.pipe pug(locals: {debug: options.debug})
 			.pipe gulp.dest "src/built_temp/"
 
 
 	gulp.task "templates:body", [ "styles:postprocess" ], ->
-		gulp.src "src/template/body.jade"
+		gulp.src "src/template/body.pug"
 			.pipe pug(locals: {debug: options.debug})
 			.pipe gulp.dest "src/built_temp/"
 
@@ -33,6 +33,6 @@ module.exports = (gulp, options) ->
 
 
 	gulp.task "templates", [ "templates:compress" ], ->
-		gulp.src "src/template/marqdown.jade"
+		gulp.src "src/template/marqdown.pug"
 			.pipe pug(locals: {debug: options.debug})
 			.pipe gulp.dest "dist/"

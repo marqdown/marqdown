@@ -72,7 +72,7 @@ class MarqDown
 			gfm: true
 			tables: true
 			breaks: true
-			pedantic: true
+			pedantic: false
 			sanitize: true
 			smartLists: true
 			smartypants: true

@@ -11,12 +11,11 @@ module.exports = (gulp, options) ->
 	prefixerOptions = {
 		# @see http://caniuse.com/usage-table
 		browsers: [
-			"not ie <= 8"
 			"> 0.5%"
 			"last 5 versions"
 			"Firefox ESR"
+			"not ie <= 8"
 		]
-#		browsers:"> 5%"
 	}
 
 	unCSSClasses = [/\.CodeMirror.*/, /\.cm-s-marqdown.*/, /\.?table.*/, /@keyframe.*/, /#app-\w+/, /#preview.*/]

@@ -104,6 +104,12 @@ Also thanks to the developers of the following software:
 
 ## Changelog
 
+V1.7.2, 26. January 2019:
+- fixed bug due to pug migration in last release
+- updated more dependencies
+- marked all dependencies as devDependencies
+- fixed animation in chrome
+
 V1.7.1, 26. January 2019:
 - updated dependencies
 - migrated gulp-uncss to uncss as gulp-postcss plugin
