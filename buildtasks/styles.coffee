@@ -1,7 +1,7 @@
 module.exports = (gulp, options) ->
 	less    = require "gulp-less"
 	lint    = require "gulp-lesshint"
-	ifelse  = require "gulp-if-else"
+	ifelse  = require "gulp-cond"
 	prefix  = require "gulp-autoprefixer"
 	csso    = require "gulp-csso"
 	postcss = require "gulp-postcss"
@@ -10,7 +10,7 @@ module.exports = (gulp, options) ->
 
 	prefixerOptions = {
 		# @see http://caniuse.com/usage-table
-		browsers: [
+		overrideBrowserslist: [
 			"> 0.5%"
 			"last 5 versions"
 			"Firefox ESR"

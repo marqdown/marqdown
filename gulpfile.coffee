@@ -1,15 +1,15 @@
 gulp = require "gulp"
-tasks = require "load-gulp-tasks"
 fs = require "fs"
 
 # config.json defines a configuration for the gulp tasks
 options =
-	pattern: ["buildtasks/*.coffee"]
+	buildDir: "./buildtasks/"
 	debug: false
 	compressBody: true
 
-# initialize existing tasks
-tasks(gulp, options)
+for task in fs.readdirSync(options.buildDir)
+	taskInstance = require options.buildDir + task
+	taskInstance(gulp, options)
 
 gulp.task "pre-build", [ "scripts:libs" ]
 

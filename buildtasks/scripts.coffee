@@ -1,6 +1,6 @@
 module.exports = (gulp, options) ->
 	coffee = require "gulp-coffee"
-	ifElse = require "gulp-if-else"
+	ifElse = require "gulp-cond"
 	uglify = require("gulp-uglify-es").default
 	concat = require "gulp-concat"
 	lint   = require "gulp-coffeelint"

@@ -104,6 +104,9 @@ Also thanks to the developers of the following software:
 
 ## Changelog
 
+V1.7.4, 22. September 2019:
+- updated dependencies
+
 V1.7.3, 26. January 2019:
 - fixed animation bug
 - fixed loading of .md files by adding mime type text/markdown
