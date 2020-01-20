@@ -35,7 +35,10 @@
 	- c, c++, objectivec, objective-c, c#, csharp // also known as 'clike'
 	- python
 	- sql
+	- shell
+	- vb
 	- xml
+	- yaml
 - Hotkeys
 	- **Bold**: CTRL + B
 	- *Emphasis*: CTRL + I
@@ -89,7 +92,6 @@ The compiled file contains the following resources:
 Embedded into the application are sources from the following software:
 - [Bootstrap](http://getbootstrap.com/) [(MIT-License)](https://github.com/twbs/bootstrap/blob/master/LICENSE)
 - [Bootswatch](http://bootswatch.com/) [(MIT-License)](https://github.com/thomaspark/bootswatch/blob/gh-pages/LICENSE)
-- [Angular Light](http://angularlight.org/) [(MIT-License)](https://github.com/lega911/angular-light/blob/master/LICENSE)
 - [CodeMirror](http://codemirror.net/) [(MIT-License)](https://github.com/codemirror/CodeMirror/blob/master/LICENSE)
 - [marked](https://github.com/chjj/marked) [(MIT-License)](https://github.com/chjj/marked/blob/master/LICENSE)
 - [lz-string](https://github.com/pieroxy/lz-string) [(MIT-License)](https://github.com/pieroxy/lz-string/blob/master/LICENSE)
@@ -103,6 +105,11 @@ Also thanks to the developers of the following software:
 - [gulp](http://gulpjs.com/)
 
 ## Changelog
+
+V1.8.0, 20. January 2020:
+- refactored code and removed alight to reduce size
+- added new languages: shell, vb, yaml
+- updated dependencies
 
 V1.7.4, 22. September 2019:
 - updated dependencies

@@ -61,7 +61,10 @@ module.exports = (gulp, options) ->
 		"php"
 		"python"
 		"sql"
+		"shell"
+		"vb"
 		"xml"
+		"yaml"
 	]
 
 	modePaths = for mode in modes
@@ -72,7 +75,6 @@ module.exports = (gulp, options) ->
 		sourceFiles = [
 			"node_modules/codemirror/lib/codemirror.js"
 			"node_modules/marked/marked.min.js"
-			"node_modules/alight/alight.js"
 		].concat(addonPaths).concat(modePaths)
 		gulp.src sourceFiles
 			.pipe concat "script.js"

@@ -64,16 +64,15 @@ class MarqDown
 
 	}
 
-	copyrightYear: (new Date()).getUTCFullYear()
-
-
 	constructor: () ->
+
+		@preparePortableDownload()
+
 		marked.setOptions(
 			gfm: true
 			tables: true
 			breaks: true
 			pedantic: false
-			sanitize: true
 			smartLists: true
 			smartypants: true
 			highlight: (code, lang) ->
@@ -93,6 +92,69 @@ class MarqDown
 					code = targetNode.innerHTML
 				return code
 		)
+
+		document.querySelector('#copyrightYear').innerHTML = (new Date()).getUTCFullYear()
+
+		elem = document.querySelector('#source-container textarea')
+		@preview = document.querySelector('#preview')
+		@previewContainer = document.querySelector('#preview-container')
+		ls = window.localStorage
+		options = @data
+		initValue = ls['marqdown.lastSession'] || elem.innerHTML
+		if initValue
+			options.codeMirror.placeholder = elem.innerHTML
+			options.codeMirror.value = initValue
+			# reset innerHTML of the element to
+			# force the editor initialization value
+			# if there was a last session
+			elem.innerHTML = initValue
+			@data.source = initValue
+			@preview.innerHTML = marked initValue
+
+		@cm = cm = CodeMirror.fromTextArea elem, options.codeMirror
+
+		# load history if there is some history in localstorage
+		if ls['marqdown.history'] and ls['marqdown.history'] isnt ""
+			cm.clearHistory()
+			cm.setHistory(JSON.parse(ls['marqdown.history']))
+
+		@registerEventHandlers()
+
+
+	registerEventHandlers: () =>
+		listener = (elem, event, handler) -> document.querySelector(elem).addEventListener(event, handler)
+		listener '#download-portable', 'focus', @onDownloadPortable
+		listener '#download-markdown', 'focus', @onDownloadMarkdown
+		listener '#download-html', 'focus', @onDownloadHTML
+		listener '#upload-markdown input', 'change', @onUploadMarkdown
+
+		@cm.on "change", =>
+			currentValue = @cm.getValue()
+			ls = window.localStorage
+			ls['marqdown.lastSession'] = currentValue if typeof currentValue is "string"
+			ls['marqdown.history'] = JSON.stringify @cm.getHistory()
+			@data.source = currentValue
+			@preview.innerHTML = marked currentValue or ""
+
+		debounce = null
+		@cm.on "scroll", =>
+			window.cancelAnimationFrame(debounce) if debounce
+			debounce = window.requestAnimationFrame () =>
+				scrollOffset = @cm.getScrollInfo()
+				relativeScrollOffset = (scrollOffset.height - scrollOffset.clientHeight + 1)
+				percent = (scrollOffset.top / relativeScrollOffset).toFixed(3)
+				@previewContainer.scrollTop = percent * (@previewContainer.scrollHeight - @previewContainer.clientHeight + 1)
+
+		listener '#preview-container', 'scroll', (event) =>
+			window.cancelAnimationFrame(debounce) if debounce
+			debounce = window.requestAnimationFrame () =>
+				elem = event.target
+				relativeScrollOffset = (elem.scrollHeight - elem.clientHeight + 1)
+				percent = (elem.scrollTop / relativeScrollOffset).toFixed(3)
+				scrollOffset = @cm.getScrollInfo()
+				absolute = percent * (scrollOffset.height - scrollOffset.clientHeight + 1)
+				@cm.scrollTo(null, absolute)
+
 
 	prettyPrintXML: (xml) ->
 		formatted = ""
@@ -122,16 +184,19 @@ class MarqDown
 		formatted
 
 
-	onDownloadPortable: (event) ->
+	preparePortableDownload: =>
+		doc = document.cloneNode(true)
+		doc.querySelector('#app').remove()
+		html = "<!DOCTYPE html>" + doc.documentElement.outerHTML
+		@data.portableDownload = html
+
+
+	onDownloadPortable: (event) =>
 		if event.target.nodeName isnt "A"
 			return
 		if event.target.hash isnt "#download-portable"
 			return
-		doc = document.cloneNode(true)
-		doc.querySelector('head style').remove()
-		doc.querySelector('#app').remove()
-		html = "<!doctype html>" + doc.documentElement.outerHTML
-		event.target.href = "data:text/html;charset=utf-8," + encodeURIComponent(html)
+		event.target.href = "data:text/html;charset=utf-8," + encodeURIComponent(@data.portableDownload)
 		event.target.download = "marqdown.html"
 
 
@@ -162,8 +227,7 @@ class MarqDown
 				reader.readAsText(file, "UTF-8")
 				reader.onerror = (e) -> throw new Error("Error reading file.")
 				reader.onload  = (e) =>
-					@data.source = e.target.result
-					@$scan()
+					@cm.setValue e.target.result
 		catch e
 			alert e
 
@@ -174,5 +238,4 @@ class MarqDown
 
 
 
-alight.ctrl.marqdown = MarqDown
-alight.bootstrap document.getElementById "app"
+new MarqDown()
