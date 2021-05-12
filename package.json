@@ -15,7 +15,7 @@
   "devDependencies": {
     "bootstrap": "^3.4.1",
     "bootswatch": "^3.4.1",
-    "codemirror": "^5.50.2",
+    "codemirror": "^5.58.2",
     "coffeescript": "^2.5.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^7.0.1",
