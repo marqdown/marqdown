@@ -30,7 +30,7 @@
     "gulp-pug": "^4.0.1",
     "gulp-uglify-es": "^2.0.0",
     "lz-string": "^1.4.4",
-    "marked": "^0.8.0",
+    "marked": "^4.0.10",
     "typeface-ubuntu": "0.0.65",
     "uncss": "^0.17.2"
   }
